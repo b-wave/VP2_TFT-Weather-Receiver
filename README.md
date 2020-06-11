@@ -60,5 +60,5 @@ https://github.com/adafruit/Adafruit_ILI9341
 https://github.com/adafruit/Adafruit-GFX-Library
 
 ## Notes:
-1. The VP3 refence to the never produced color LCD console that Davis Instrumnents https://www.davisinstruments.com/weather-monitoring/
+1. The VP3 refernce to the never produced color LCD console from Davis Instrumnents https://www.davisinstruments.com/weather-monitoring/
 that all of us fans of thier products wish for. 
