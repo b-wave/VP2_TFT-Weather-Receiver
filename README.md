@@ -1,7 +1,7 @@
 # VP3-Weather-Receiver
 *Davis Vantage Pro Weather Station Reciever using a Moteieino board with RFM69 and Color TFT Display.(1)*
 
-This project is mainly a demo of the dekay/DavisRFM69 library (et.al.) using a TFT LCD screen 
+This project is mainly a demo of the dekay/DavisRFM69 library (et.al.) @dekay using a TFT LCD screen 
 it was intended to be a low-cost replacement for a broken Davis Vu Weather station that the ISS still works (with a few issues) 
 *...but that is another story.* Hopefully *someone* will find this useful. I had a fun time developing it and
 you can still see the saga of revisions in the source code listing as it evolved over several months. 
@@ -22,12 +22,13 @@ a LiPo battery backup and charger, and a real time clock.  Some features will ne
 the: *next version that uses a Teensey 3.2 board will do all this and more!*
 
 ## CREDITS:
-This is mostly a derivitive work from several authors i give credit
+This is a derivitive work from several authors i give credit
 to the original works in line as i use them, without their work
 this would not be possible.  The original work here includes the
 additions for using TFT LCD displays. But I credit to getting the 
 TFT to work with the RFM69 was because of this excellent article:
- https://www.pjrc.com/better-spi-bus-design-in-3-steps/  Thanks Paul! 
+ https://www.pjrc.com/better-spi-bus-design-in-3-steps/  
+ Thanks Paul! @PaulStoffregen
 
 
 https://github.com/kobuki/VPTools
