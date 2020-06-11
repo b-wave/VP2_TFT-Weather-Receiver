@@ -5,9 +5,15 @@ This folder provides the hardware info for this project. The circuit board in th
 
 # Schematic
 
-The schematic is in KiCAD format, here is it is if you dont have that software. 
+The schematic is in KiCAD format, here is it is if you don't have that software. 
+
 ![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Docs/Schematic.png)
 
 The circuit board is shown assembled in these 3D renderings.  The circuit board will accomodate 2 sizes of displays. The LiPo battery is sanwidched in between the display and main PCB.  There are 3 tactile switches to set the clock and other parameters. You may want to use the long plunger types if you are putting in some sort of case. They can be mounted on either side of the board as well. 
 
 ![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Hardware/VP2_TFT_1_TOPSIDE.jpg)
+
+The back side is where the Moteino and other modules plug in. The power connectors are on the left side.  I used a mini-USB connector for just power.  The Pin out for the USB_Power_Only is setup to match the SPARKFUN Breakout board enables a power plug to be moved depending on the case requirements. 
+
+![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Hardware/VP2_TFT_1_SOLDERSIDE.jpg)
+
