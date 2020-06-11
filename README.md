@@ -19,7 +19,7 @@ indoor temp, humidity and barometric pressure to make a usable replacement.
 
 I designed a circuit board and added some usefull features such as push button setting
 a LiPo battery backup and charger, and a real time clock.  Some features will need to move to
-the: *next version that uses a Teensey 3.2 board will do all this and more! 
+the: *next version that uses a Teensey 3.2 board will do all this and more!*
 
 ## CREDITS:
 This is mostly a derivitive work from several authors i give credit
