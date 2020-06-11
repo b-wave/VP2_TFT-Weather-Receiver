@@ -1,16 +1,16 @@
 # VP3-Weather-Reciever
-Davis Vantage Pro Weather Station Reciever with RFM-69 and Color TFT Display
+Davis Vantage Pro Weather Station Reciever using a Moteieino with RFM69 and Color TFT Display.
+This is mainly a demo of the dekay/DavisRFM69 library (et.al.) using a TFT LCDscreen 
+It was intended as a Davis VP2 Weather console replacement. 
 
 ![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Docs/20200610_172159.jpg)
 Display in action - Front view
 
-This is a demo of the dekay/DavisRFM69 library using a TFT LCDscreen 
-for a Weather Receiver console replacement. 
 
 It displays only  the data received from the Davis Vantage Vu ISS.
 Curently, this version does not  add the internal data to make a complete 
 TFT console replacement for display of all weather parameters.
-
+## CREDITS:
 This is mostly a derivitive work from several authors i give credit
 to the original works in line as i use them, without their work
 this would not be possible.  The original work here includes the
