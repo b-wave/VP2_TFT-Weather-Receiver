@@ -1,15 +1,26 @@
 # VP3-Weather-Reciever
 Davis Vantage Pro Weather Station Reciever using a Moteieino with RFM69 and Color TFT Display.
-This is mainly a demo of the dekay/DavisRFM69 library (et.al.) using a TFT LCDscreen 
-It was intended as a Davis VP2 Weather console replacement. 
+This is mainly a demo of the dekay/DavisRFM69 library (et.al.) using a TFT LCD screen 
+
+This project was intended to be a low cost replacement for a broken 
+Davis Vu Weather staion that the ISS still works (with a few issues) 
+but that is another story. Hopefully someone can find this useful.
 
 ![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Docs/20200610_172159.jpg)
 Display in action - Front view
 
+Because i used a low cost Motieno, i ran out of memory so this version
+can displays only  the data received from the Davis Vantage Vu ISS.
+With some defived info like,  max and mins, rain, and cool TFT wind compass displays. 
 
-It displays only  the data received from the Davis Vantage Vu ISS.
 Curently, this version does not  add the internal data to make a complete 
-TFT console replacement for display of all weather parameters.
+TFT console replacement for display of all weather parameters. I had to remove
+indoor temp, humidity and barometric pressure to make a usable replacement. 
+
+I designed a circuit board and added some usefull features such as push button setting
+a LiPo battery backup and charger, and a real time clock.  Some features will need to move to
+the /next version/ i am working on that uses a Teensey 3.2 board! 
+
 ## CREDITS:
 This is mostly a derivitive work from several authors i give credit
 to the original works in line as i use them, without their work
@@ -18,9 +29,6 @@ additions for using TFT LCD displays. But I credit to getting the
 TFT to work with the RFM69 was because of this excellent article:
  https://www.pjrc.com/better-spi-bus-design-in-3-steps/  Thanks Paul! 
 
-This project was intended to be a low cost replacement for a broken 
-Davis Vu Weather staion that the ISS still works (with a few issues) 
-but that is another story. Hopefully someone can find this useful.
 
 https://github.com/kobuki/VPTools
 VPTools is a Davis(TM) weather station compatible transceiver library. 
