@@ -1,5 +1,6 @@
 # VP3-Weather-Reciever
-Davis Vantage Pro Weather Station Reciever using a Moteieino with RFM69 and Color TFT Display.
+*A Davis Vantage Pro Weather Station Reciever using a Moteieino with RFM69 and Color TFT Display.
+
 This project is mainly a demo of the dekay/DavisRFM69 library (et.al.) using a TFT LCD screen 
 intended to be a low cost replacement for a broken Davis Vu Weather staion that the ISS still works (with a few issues) 
 ...but that is another story. Hopefully *someone* will find this useful. I ahd a fun time developing it and
