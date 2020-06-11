@@ -6,5 +6,5 @@ This folder provides the hardware info for this project. The circuit board in th
 # Schematic
 
 The schematic is in KiCAD format, here is it is if you dont have that software. 
-![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Docs/20200610_172159.jpg)
+![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Docs/Schematic.png)
 
