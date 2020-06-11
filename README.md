@@ -9,11 +9,11 @@ you can still see the saga of revisions in the source code listing as it evolved
 ![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Docs/20200610_172159.jpg)
 Display in action - Front view
 
-Because i used a low cost Motieno, it ran out of memory so this version
+Because i used a low cost Motieno, https://lowpowerlab.com/ it ran out of memory so this version
 can display mainly only the data received from the Davis Vantage Vu ISS.
 With some derived info like,  max and mins, rain, and cool TFT wind compass displays. 
 
-Curently, this version does not  add the internal data to make a complete 
+Curently, this project version does not  add the internal data to make a complete 
 TFT console replacement for display of all weather parameters. I had to remove
 indoor temp, humidity and barometric pressure to make a usable replacement. 
 
@@ -59,3 +59,6 @@ These libraries are for the Adafruit ILI9341 display products:
 https://github.com/adafruit/Adafruit_ILI9341
 https://github.com/adafruit/Adafruit-GFX-Library
 
+## Notes:
+1. The VP3 refence to the never produced color LCD console that Davis Instrumnents https://www.davisinstruments.com/weather-monitoring/
+that all of us fans of thier products wish for. 
