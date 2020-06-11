@@ -1,6 +1,9 @@
 # VP3-Weather-Reciever
 Davis Vantage Pro Weather Station Reciever with RFM-69 and Color TFT Display
 
+![uDSKY](https://github.com/b-wave/uDSKY/blob/master/Files/20161217_135148.jpg)
+Display in action - Front view
+
 This is a demo of the dekay/DavisRFM69 library using a TFT LCDscreen 
 for a Weather Receiver console replacement. 
 
