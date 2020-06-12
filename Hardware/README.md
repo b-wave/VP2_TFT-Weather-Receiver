@@ -20,7 +20,10 @@ The back side is where the Moteino and other modules plug in. The power connecto
 
 ![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Hardware/VP2_TFT_1_SOLDERSIDE.jpg)
 
-##Moteieno##
+# Parts 
+
+The parts list is here: [BOM](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Hardware/VP2_TFT_1.html) but not all parts are installed depending of software support and features. 
+
 The brains of this project is the [Moteino](https://lowpowerlab.com/shop/product/99)  Remember that you must add the RFM69CW 868/916MHz RF Module option or you won't be receiving any data!  You can also get the RFM69HCW but that version has more transmit power that you really don't need. Also, you can add the headers and possibly the memory chip but i really diddn't use that in the software. 
 
-[BOM](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Hardware/VP2_TFT_1.html)
+
