@@ -25,7 +25,7 @@ The back side is where the Moteino and other modules plug in. The power connecto
 The parts list is here: [BOM](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Hardware/VP2_TFT_1.html) but not all parts are installed depending of software support and features. 
 
 * Arduino. The brains of this project is the [Moteino](https://lowpowerlab.com/shop/product/99)  Remember when ordering that you must add the RFM69CW 868/916MHz RF Module option or you won't be receiving any data!  You can also get the RFM69HCW but that version has more transmit power that you really don't need. Also, you can add the headers and possibly the memory chip but i really diddn't use that in the software. 
-* Displays.The part that makes this a consol replacement is the TFT color LCD display. I used the ILI 240x320 that come in two sizes.  These are very common on e-bay ane Amazon.  If you use the ones i found then thes will plug into the PCB directly.  You can jumper in others but if you want to use my software without modificaiton you need ILI and 240x320 to be compatible.  
+* Displays.The part that makes this a consol replacement is the TFT color LCD display. I used the ILI9341 240x320 that come in two sizes.  These are very common on e-bay ane Amazon.  If you use the ones i found then thes will plug into the PCB directly.  You can jumper in others but if you want to use my software without modificaiton you need ILI9341 and 240x320 to be compatible. The two boards  used are 2.8" TFT SPI 240*320 v1.1 TJCTM24028-SPI and  
 * RTC.
 * Jumpers.
 * Sensors.
