@@ -1,3 +1,4 @@
+
 # VP3-Weather-Receiver Hardware
 *Davis Vantage Pro Weather Station Reciever using a Moteieino board with RFM69 and Color TFT Display*
 
@@ -32,6 +33,17 @@ The other feature of both boards is they have SPI controlled SD cards.  I intend
 
 * RTC.
 * Jumpers.
+
+Jumper | Label | Function
+------------ | ------------ | -------------
+JP1| NO PWM | Disables Display dimming, Bypass Q1
+JP2| NO SO BUFF | Short for SD Card MISO Bypass U1
+JP3| NO SI BUFF | Short for SD Card MOSI Bypass U3
+JP4| xxx | Not Used
+JP5| IRQ | Enable IRQ for RTC on Pin D2 (not used)
+JP6| CD | Enable SD Card insert Detect on pin D2 (TBD)
+
+
 * Sensors.
 * LEDs.
 
