@@ -2,7 +2,7 @@
 # VP3-Weather-Receiver Hardware
 *Davis Vantage Pro Weather Station Reciever using a Moteieino board with RFM69 and Color TFT Display*
 
-This folder provides the hardware info for this project. The circuit board in the main page is an early version.  The current board will be available on OSHPark so you can just order boards if you want them as-is.  The main differences are some minor circuit fixes, a slight size adjustment (to fit in a case i have in mind for the station) and embedding the RTC and battery on th board.  The original PCB was ony intended to use plug in modules and make it a little more robust than protoboards.  It is a strange combo of thru-hole and SMT technologies that reflect mostly what i had on hand or could get for this proto. 
+This folder provides the hardware info for this project. The circuit board in the main page is an early version.  The current board will be available on OSHPark so you can just order boards if you want them as-is.  The main differences are some minor circuit fixes, a slight size adjustment (to fit in a case i have in mind for the station) and embedding the RTC and battery on th board.  The original PCB was ony intended to use plug in modules and make it a little more robust than protoboards.  From the software, which is pretty ugly, you can probabily tell I am not a software expert, but this board has a strange combo of thru-hole and SMT technologies that reflect mostly what was on hand or could get easily for this proto. is not making the hardware hall of fame either, but it works.   
 
 # Schematic
 
@@ -21,18 +21,20 @@ The back side is where the Moteino and other modules plug in. The power connecto
 
 ![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Hardware/VP2_TFT_1_SOLDERSIDE.jpg)
 
-# Parts 
+# Circuit Description
 
 The parts list is here: [BOM](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Hardware/VP2_TFT_1.html) but not all parts are installed depending of software support and features. 
 
 * Arduino. The brains of this project is the [Moteino](https://lowpowerlab.com/shop/product/99)  Remember when ordering that you must add the RFM69CW 868/916MHz RF Module option or you won't be receiving any data!  You can also get the RFM69HCW but that version has more transmit power that you really don't need. Also, you can add the headers and possibly the memory chip but i really diddn't use that in the software. 
-* Displays.The part that makes this a consol replacement is the TFT color LCD display. I used the ILI9341 240x320 that come in two sizes.  These are very common on e-bay ane Amazon.  If you use the ones i found then thes will plug into the PCB directly.  You can jumper in others but if you want to use my software without modificaiton you need ILI9341 and 240x320 to be compatible. The two boards  used are 2.8" TFT SPI 240x320 v1.1 TJCTM24028-SPI and the smaller 2.2" CR2013-M12420 ( shown in pics) 
 
-* SD Card. The other feature of both boards is the TFT Displays both have SPI controlled SD cards.  I intended to use these as a data loging feature, but the sofware does not support.  Also, in reading complaints about these display cards I added two buffer chips to try to eliminate these issues. The two 74AHC1G125 single package gates U1 and U3 only allow SPI traffic when the cards are specifically selected via the chip selet pin. To bypass these chips if we don't need, JP1 and JP2 will povide a non switched path by soldering them. This hardware will hopefully keep the cards from getting corrupted. LED D? "ACTY" and R? can be added to monitor the SD card activity.  At this time the hardware and the logging feature have not been tested. 
+* Displays.The part that makes this a console replacement is the TFT color LCD display. I used feature the ILI9341 chip in 240x320 resolution that come in two sizes.  These are very common on e-bay and Amazon.  In the final version I intend to use the Adafruit versions for suply chain longevity i don't think the clones will have. If you use the ones I found then thes will plug into the PCB directly.  You can jumper in others but if you want to use my software without modificaiton you need ILI9341 and 240x320 to be compatible. The two boards  used are 2.8" TFT SPI 240x320 v1.1 TJCTM24028-SPI and the smaller 2.2" CR2013-M12420 ( shown in pics) 
+
+* SD Card. The other feature on the TFT Displays is both have SPI controlled SD cards.  I intended to use these as a data loging feature, but the sofware does not support.  Also, in reading complaints and warnings about these display SD cards I suspected there are SPI circuit issues so I added two buffer chips to try to eliminate these issues. The two 74AHC1G125 single-package gates U1 and U3 to only allow SPI traffic when the cards are specifically selected via the chip selet pin. This hardware will hopefully keep the SD cards from getting corrupted. To bypass these chips if it turns out we don't need to install the buffer(s), JP1 and JP2 will povide a non-switched path by soldering them closed with a blob of solder.  LED D5 "ACTY" and R19 can be added to monitor the SD card activity.  At this time the hardware and the logging feature have not been tested. 
 
 
-* RTC.
-* Jumpers.
+* RTC. The original prototype used a RTC on a board. This is easy to breadboard with but takes a lot of board space and height. I thought it would be OK, considering the Motieno is on a socket too, but decided to try an embedded approach in this version using a compact SO-8  *-Z* version of the DS3231Z chip. I also reduced the battery from the standard CR2023 3V Li Coin cell to a smaller CR1220.  I am not sure how long this cell will last, but that is only really needed if the main power *and* the battery back up fails as well.  
+
+* Options.  Various "solder blob" configuraton jumpers are on the board to bypass or enable some features.  Pin D2 is selectabe between one of two features, shown below I don't think both will be usable at the same time so it is an either/or selecton for it. 
 
 Jumper | Label | Function
 ------------ | ------------ | -------------
@@ -40,7 +42,7 @@ JP1| NO PWM | Disables Display dimming, Bypass Q1
 JP2| NO SO BUFF | Short for SD Card MISO Bypass U1
 JP3| NO SI BUFF | Short for SD Card MOSI Bypass U3
 JP4| xxx | Not Used
-JP5| IRQ | Enable IRQ for RTC on Pin D2 (not used)
+JP5| IRQ | Enable IRQ for RTC on Pin D2 (not used) *OR*
 JP6| CD | Enable SD Card insert Detect on pin D2 (TBD)
 
 
