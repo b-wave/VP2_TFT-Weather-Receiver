@@ -43,7 +43,12 @@ JP5| IRQ | Enable IRQ for RTC on Pin D2 (not used) *OR*
 JP6| CD | Enable SD Card insert Detect on pin D2 (TBD)
 
 
-* Sensors.
+* Sensors.  Several on board sensors and conectors for sensors are provided.  
+* * Voltage sensor. Consists of two high-value resistors (100k) R10 and R11 Take the input voltage of the battery and divide it in half. Capacitor C2 can be used for smoothing or noise reduction if needed, this signal is fed into VBATT (Analog Pin A7).  The voltage is scaled and is currently only used as a display of the battery voltage as a charge indication.
+* * Ambient Sensor.  An analog voltage perportional to the light is provide by a voltage divider formed by R16 a **LDR** and scaled by R16 (100k). A capacitor (C10) is provided to smooth the voltage input. The sensor used was harvested from a broken lawn solar light. 
+* * Indoor Humidity and Tempature Sensor.  J7 provides a pin compatible connector for this sensor. It has a unique interface provided into pin D2 with a 4.7K pull up (R21)  These integrated temp/humidity sensors are pretty common on Amazon and other suppliers.  This was only used in early code versions before i relized there would not be enough code storage space on the Moteuino board. 
+* * Barometric Sensor. J8 is an i2C connector arranged with voltage and ground pins to match an  I2C mems barometer breakout board, alas, i did nto have code space to keep it.  Pins A5 and A4 provide the i2C SCL and SDA signals. Any other I2C board can work with these pins as well. 
+
 * LEDs.
 
 
