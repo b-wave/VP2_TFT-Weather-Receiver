@@ -47,8 +47,16 @@ JP6| CD | Enable SD Card insert Detect on pin D2 (TBD)
   * **Voltage sensor.** Consists of two high-value resistors (100k) R10 and R11 Take the input voltage of the battery and divide it in half. Capacitor C2 can be used for smoothing or noise reduction if needed, this signal is fed into VBATT (Analog Pin A7).  The voltage is scaled and is currently only used as a display of the battery voltage as a charge indication. 
   * **Ambient Sensor.**  An analog voltage perportional to the light is provide by a voltage divider formed by R16 a **LDR** and scaled by R16 (100k). A capacitor (C10) is provided to smooth the voltage input. The sensor used was harvested from a broken lawn solar light. 
   * **Indoor Humidity and Tempature Sensor.**  J7 provides a pin compatible connector for this sensor. It has a unique interface provided into pin D2 with a 4.7K pull up (R21)  These integrated temp/humidity sensors are pretty common on Amazon and other suppliers.  This was only used in early code versions before i relized there would not be enough code storage space on the Moteuino board. 
-  * **Barometric Sensor.** J8 is an i2C connector arranged with voltage and ground pins to match an  I2C mems barometer breakout board, alas, i did nto have code space to keep it.  Pins A5 and A4 provide the i2C SCL and SDA signals. Any other I2C board can work with these pins as well. 
+  * **Barometric Sensor.** J8 is an i2C connector arranged with voltage and ground pins to match an  I2C mems barometer breakout board, alas, i did not have code space to keep it.  Pins A5 and A4 provide the i2C SCL and SDA signals. Any other I2C board can work with these pins as well. 
 
 * **LEDs.** Several LEDs indicators are also sprinkled around the board, mostly for debugging, and what fun is having no blinking lights?
 
+LED| Label | Function
+------------ | ------------ | -------------
+D1| CHARGE | MCP73831 STAT Pin "Charging"
+D3| Red |  Controled by Pin A3
+D4| Green |Controled by Pin D9 (same as Motieno LED)
+D5| ACTY | Controled by Pin D4 to show some status? 
+D6| Yellow | (DNI) TP6 connect if needed for debug
+D7| SD_CS | SD Card chip is selected (SPI activity)
 
