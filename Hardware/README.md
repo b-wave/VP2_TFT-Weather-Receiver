@@ -4,7 +4,7 @@ This folder provides the hardware info for this project. The circuit board in th
 
 # Schematic
 
-The schematic is in KiCAD format, here is it is if you don't have that software. 
+The schematic is in KiCAD format, here it is as a .JPEG if you don't have that software. You will notice a lot of hardware features on the board are not in use in the VP3 console receiver project.  If you order the boards from OSH Parkn  you get 3 boards so one can be a console, one can be a logger, and the third can be an APRS packet generator/controller.  ISS does not care how many receivers are listening!  
 
 ![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Docs/Schematic.png)
 
