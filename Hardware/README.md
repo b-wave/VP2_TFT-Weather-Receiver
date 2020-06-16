@@ -75,8 +75,24 @@ Two battery circuits are provided for back up purposes.
 
 ITEM | Label | Type |Function
 ----- | -------- | ------------ | -------------
-J1| BATT | 2-pin JST |LiPo Battery Connector
-J2 |   |   | 
-J3 |   |   | 
-J4 |   |   | 
-J5 |   |   | 
+J1| BATT | 2-pin JST |LiPo Battery 
+J2 | USB_POWER_ONLY  | 5-Pin 0.1"  | USB Breakout board (USB VBUS no data pins)
+J3 | USB-B POWER  |  Mini-B, USB Power (+5+ GND No Data pins)  | 
+J4 | EXTERNAL ANTENNA  | U.FL RF COAX  | Connects Board to Moteino Antenna 
+J5 | EXTERNAL ANTENNA   | SMA (R-P or NORM)   | Antenna Connector
+J6 | GPS/APRS  | Header, 4-Pin, 0.1"  | Serial data (D0, D1 ) + 3.3V Power + GND
+J7 | DHT-11   |4 Pin 0.1"  | Humidity and Temp Sensor 
+J8 | I2C  |4-pin 0.1"   | Baro Sensor or other I2C, SCL SDA 3.3V POWER GND
+JP1 | NO PWM  |  SMT Jumper | To Bypass Backlight PWM Transistor Q1
+JP2 | NO SI BUFF   | SMT Jumper  | Bypass MOSI Switch  U3 to SD Card
+JP3 | NO SO BUFF   | SMT Jumper |  Bypass MISO Switch U1 from SD Card
+JP4 | N/A   | N/A   | Not used - removed from board version
+JP5 | IRQ   | SMT Jumper   | Connects RTC IRQ to pin D2
+JP6 | CARD DET  | SD card inserted  | No card = low Connects to pin D2
+TP1 | 32KHZ  | Test Point  | RTC 32KHz Output
+TP2 | SQW  | Test Point  | RTC Square Wave Output (for interrupt)
+TP3 | LED  | Test Point  | Moteino LED Signal (D9)
+TP4 | GND  | Test Point  | Power / Test Ground
+TP5 | VBATT | Test Point  | Battery Voltage
+TP6 | TST  | Test Point  | Connetct a digital signal to LED6 ( or Peizo Speaker!) 
+TP7 | /RST   | Test Point  | RTC Reset, GND = Resets RTC clock
