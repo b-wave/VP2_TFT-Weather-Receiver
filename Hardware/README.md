@@ -1,6 +1,6 @@
 *Davis Vantage Vu Weather Station Reciever using a Moteieino board with RFM69 and Color TFT Display*
 
-This folder provides the hardware info for this project. The circuit board in the main page is an early version.  The current board will be available on OSH Park so you can just order boards if you want them as-is.  The main differences are some minor circuit fixes, a slight size adjustment (to fit in a case I have in mind for the station) and embedding the RTC and battery on the board.  The original PCB was ony intended to use plug in modules and make it a little more robust than protoboards.  From the software, which is pretty ugly, you can probabily tell I am not a software expert, but this board has a strange combo of thru-hole and SMT technologies that reflect mostly what was on hand or could get easily for this proto. is not making the hardware hall of fame either, but it works.   
+This folder provides the hardware info for this project. The circuit board in the main page picture is an early version.  The current board will be available on OSH Park so you can just order boards if you want them as-is.  The main differences are some minor circuit fixes, a slight size adjustment (to fit in a case I have in mind for the station) and embedding the RTC and battery on the board.  The original PCB was ony intended to use plug in modules and make it a little more robust than protoboards.  From the software, which is pretty ugly, you can probabily tell I am not a software expert, but this board has a strange combo of thru-hole and SMT technologies that reflect mostly what was on hand or could get easily for this proto. is not making the hardware hall of fame either, but it works.   
 
 # Schematic
 
@@ -8,9 +8,9 @@ The schematic is in KiCAD format, here it is as a .JPEG if you don't have that s
 
 ![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Docs/Schematic.png)
 
-The circuit board is shown assembled in these 3D renderings.  The circuit board will accomodate 2 sizes of 320x240 displays. The LiPo battery connector is on this side as well as it is sandwiched in between the display and main PCB.  There are 3 tactile switches:
+The circuit board is shown assembled in these 3D renderings.  The circuit board will accomodate 2 sizes of 320x240 displays. The 3D renderings also show the assembly with the smaller 2.2" display.  You can see the outline of the optional 2.8" display and that i Put the LED indicators outside its outline. The LiPo battery connector is on this side as well as it is sandwiched in between the display and main PCB.  There are 3 tactile switches:
 **"+"  "-"  "GO!"**
-Used to set the clock and other parameters. You may want to use the long plunger types (13mm - 15mm)  should reach thru a front or rear panel in this configuration especially if you are putting it in some sort of case. They can be mounted on either side of the board as well. 
+Used to set the clock and other parameters. You may want to use the long plunger types (13mm - 15mm)  should reach thru a front or rear panel in this configuration especially if you are putting it in some sort of case. They can be mounted on either side of the board as well.  With the 2.8" display the swithes will need to be relocated as they are blocked from the front by that display. (1)
 
 ![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Hardware/VP2_TFT_1_TOPSIDE.jpg)
 
@@ -82,3 +82,6 @@ TP4 | GND  | Test Point  | Power / Test Ground
 TP5 | VBATT | Test Point  | Battery Voltage
 TP6 | TST  | Test Point  | Connetct a digital signal to LED6 ( or Peizo Speaker!) 
 TP7 | /RST   | Test Point  | RTC Reset, GND = Resets RTC clock
+
+ * **NOTES** 
+   * *1. The 2.8" display has a touch screen but the pins are not connected in in this version.*
