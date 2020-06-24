@@ -47,7 +47,7 @@ D1| CHARGE | MCP73831 STAT Pin "Charging"
 D3| Red |  Controlled by Pin A3, flashes for bad stuff
 D4| Green |Controlled by Pin D9 (same as Motieno LED) good stuff
 D5| ACTY | Controlled by Pin D4 to show some status? Maybe as SD card issues?
-D6| Yellow | (DNI) TP6 connect if needed for debug, visile from front panel 
+D6| Yellow | (DNI) TP6 connect if needed for debug, visible from front panel 
 D7| SD_CS | on if SD Card chip is selected (SPI activity)
 
 
