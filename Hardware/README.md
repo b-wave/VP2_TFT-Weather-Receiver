@@ -4,13 +4,13 @@ This folder provides the hardware info for this project. The circuit board in th
 
 # Schematic
 
-The schematic is in KiCAD format, here it is as a .JPEG if you don't have that software. You will notice a lot of hardware features on the board are not in use in the VP3 console receiver project.  If you order the boards from [OSH Park](https://oshpark.com/)  you get 3 boards so one can programmed to be a console, one can be a logger, and the third can be an APRS packet generator/controller.  ISS does not care how many receivers are listening!  *See Note (2)*
+The schematic is in KiCAD format, here it is as a .JPEG if you don't have that software. You will notice a lot of hardware features on the board are not in use in the VP3 console receiver project.  If you order the boards from [OSH Park](https://oshpark.com/)  you get 3 boards so one can programmed to be a console, one can be a logger, and the third can be an APRS packet generator/controller.  ISS does not care how many receivers are listening!  *(1)*
 
 ![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Docs/Schematic.png)
 
 The circuit board is shown assembled in these 3D renderings.  The circuit board will accomodate 2 sizes of 320x240 displays. The 3D renderings also show the assembly with the smaller 2.2" display.  You can see the outline of the optional 2.8" display and that i Put the LED indicators outside its outline. The LiPo battery connector is on this side as well as it is sandwiched in between the display and main PCB.  There are 3 tactile switches:
 **"+"  "-"  "GO!"**
-Used to set the clock and other parameters. You may want to use the long plunger types (13mm - 15mm)  should reach thru a front or rear panel in this configuration especially if you are putting it in some sort of case. They can be mounted on either side of the board as well.  With the 2.8" display the swithes will need to be relocated as they are blocked from the front by that display. See Note (1)
+Used to set the clock and other parameters. You may want to use the long plunger types (13mm - 15mm)  should reach thru a front or rear panel in this configuration especially if you are putting it in some sort of case. They can be mounted on either side of the board as well.  With the 2.8" display the swithes will need to be relocated as they are blocked from the front by that display. *(2)*
 
 ![VP2_TFT-Weather-Receiver](https://github.com/b-wave/VP2_TFT-Weather-Receiver/blob/master/Hardware/VP2_TFT_1_TOPSIDE.jpg)
 
@@ -90,5 +90,5 @@ TP6 | TST  | Test Point  | Connetct a digital signal to LED6 ( or Peizo Speaker!
 TP7 | /RST   | Test Point  | RTC Reset, GND = Resets RTC clock
 
  * **NOTES** 
-   * *1. The 2.8" display has a touch screen but the pins are not connected in in this version.*
-   * *2. I have started a version that uses a Teensey 3.2.  Early software shows promise as it now sucessfully communicates to the RF-69 radio and TFT.
+   * *1.  I have started a version that uses a Teensey 3.2 for more software space.  Early versions show promise as it now sucessfully communicates to the RF-69 radio and TFT.*
+   * *2. The 2.8" display has a touch screen but the pins are not connected in in this version.*
