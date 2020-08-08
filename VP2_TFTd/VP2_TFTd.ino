@@ -125,6 +125,12 @@ https://github.com/adafruit/Adafruit-GFX-Library
                   key modes, not sure if that was needed.  Keep an eye on this, may need to diff V10 and V11
                   UPDATE: May have been a loose conection?  Not seen since  
 
+07/26/2020 V1.13x New Hardware Use with VP2TFT.kicad.pcb DWG 200118 REV D or later.
+                  (a) TODO - New pin assignmnets  - Done!
+                  (b) TFT Rotated 180 from proto - DONE!
+                  (c) Reduce Backlight on battery power 
+                  (d) Improved wind indicator smoothing (north crossing and fast large jumps) 
+
 (not so) BIG TODO LIST REMAINING...
 xx/xx/2019  V1.0x 
                  TODO: Remove all unused code, final release cleanup.
@@ -187,9 +193,9 @@ Error compiling for board Moteino.
  * 
  *****************************************************************************/
 
-#define VERSION " v1.12h"        // Version of this program
-//#define TITLE "XyGyWx"
-#define TITLE "VP2_TFT"        //For display
+#define VERSION " v1.13d"        // Version of this program
+#define TITLE "XyGyWx"
+//#define TITLE "VP2_TFT"        //For display
 
 
 /////////////////////Save Info Between Resets////////////////////////////////
@@ -231,18 +237,38 @@ Error compiling for board Moteino.
 
 //Other used pins:
 #define LED               9       // Moteinos have LEDs on D9
-#define GREEN_LED         1       // OK
-#define RED_LED           0       // ERR
-#define LCD_PWM           5       // LCD Backlight
+#define GREEN_LED         9       // V13 OK was 1
+#define RED_LED           A3       // V13 ERR was 0
+#define LCD_PWM           3       // V13 LCD Backlight was 5
 
 ///Enable the buttons for settings
 #include <Button.h>  //V1.12
 
-Button PLUS_key(A1);
-Button MINUS_key(A2);
-Button OK(A0);
+Button PLUS_key(A0);  // PB1 V13 Was A1
+Button MINUS_key(A2); // PB2
+Button OK(A1);        // PB3 V13 Was A0
 
-
+/*  This is the PIN info for the V2 PROTOTYPE REV D HARDWARE DWG 200118 
+ *   
+ *   
+ * A7 = VBATT/2
+ * D3 = LED PWM
+ * A5 = SCL
+ * A4 = SDA
+ * A6 = AMBIENT LIGHT SENSOR
+ * A2 = PB2 (-)
+ * A0 = PB1 (+)
+ * A1 = PB3 (GO!)
+ * 
+ * D2 = SQW (int) SD Card + Derect 
+ * A3 = LED (D3)  LED_R 
+ * D9 = LED (D4)  LED_G (Same as board LED)
+ * ?? = LED (D6)  LED_Y
+ * 
+ * D1 = TX (GPS/APRS)
+ * D0 = RX  (GPS/APRS)
+ * 
+ ***************************************************/
 /*  This is the PIN info for the V1 PROTOTYPE REV AHARDWARE DWG 190409A 
  *   Will need to be adjusted for V2! REV D Hardware...
  * A7 = VBATT
@@ -266,13 +292,17 @@ Button OK(A0);
 // NOTE: the battery is strictly for backup power 
 //       but it does get charged while the unit is plugged in
 /////////////////////////////////////////////////////
+bool LowBatt = false; //g;obal?
  float BatteryVolts()
  {
- float temp = 0.0;
+  float temp = 0.0;
   float InputVolts = 0.0;
+  //LowBatt = false;
   int AnalogValue = analogRead(A7);
   temp = (AnalogValue * 3.3)/1024.0 ; // 3.3V REFERENCE
   InputVolts = temp/0.5;//100K||100K = 0.5
+  if(InputVolts < 4.05) LowBatt = true;  //v1.13
+  if(InputVolts > 4.19) LowBatt = false; //v1.13 some hystoiesis here
   return(InputVolts);    
  }
 
@@ -287,11 +317,15 @@ Button OK(A0);
  {
  int tmp = 0;
  int pwm = 0;
-  int SensorValue = analogRead(A3);
-  tmp = map(SensorValue, 0, 1023, 100, 0);
-  pwm = map(SensorValue, 0, 1023, 255, 25); //V1.11 Back light test!
+  int SensorValue = analogRead(A6); //Need to define was A3 V1.13
+  tmp = map(SensorValue, 0, 1023, 100, 10); //V1.13 Range?
+  pwm = map(SensorValue, 0, 1023, 250, 25); //V1.11 Back light test!
+  if(LowBatt) { //V1.13 Reduce Backlight on battery power 
+    pwm=pwm-10; //V1.13  
+    tmp=tmp-5; //V1.13 
+  }
   analogWrite(LCD_PWM, pwm);  //set pwm pin V1.11
-  //TODO add low power mode map...to extend battery life
+  //DONE V1.13c TODO add low power mode map...to extend battery life
   return(tmp);    
  }
 
@@ -464,7 +498,7 @@ void setup() {
   tft.fillScreen(ILI9341_BLACK);
   tft.setTextColor(ILI9341_YELLOW);
   tft.setTextSize(2);
-  tft.setRotation(5); //We need landscape!
+  tft.setRotation(3); //We need landscape!(5)
   tft.println("Starting TFT...");
 
   /////////TEST Backlight Dimming///////////////
@@ -574,7 +608,7 @@ void setup() {
 #define SECONDARYDISP false  //TODO:  Maybe for bigger displays? 
  
 // Set up various areas on the display screen:
-      tft.setRotation(5); //We need landscape!
+      tft.setRotation(3); //We need landscape!
                       
       tft.drawRect(0, 0, tft.width(),40, ILI9341_BLUE); ///info/Clock Bar on top
       tft.setTextColor(ILI9341_GREEN,ILI9341_BLACK);
@@ -712,7 +746,7 @@ void loop(void)
     int          w = tft.width(),
                  h = tft.height();
      bool UpdateScreen = true;            
-    tft.setRotation(5);  //Landscape will be needed
+    tft.setRotation(3);  //Landscape will be needed
     
 // This was a TEST that  does all degress fast ...Not needed 
 //  for(int ddd=0; ddd<360; ddd++) {
@@ -1093,18 +1127,19 @@ if(ISS_windSpeed > ISS_WindMAX){  //tag for new gust speed
 //Console Battery updates all the time to monitor: 
 /////////////////////////////////////////////////////////////////////
      tft.setTextColor(ILI9341_GREEN,ILI9341_BLACK); 
+     if(LowBatt) tft.setTextColor(ILI9341_RED,ILI9341_BLACK); //V1.13c
      tft.setCursor(3,24);  // Battery Voltage here   
      tft.setTextSize(1);
      tft.print(BatteryVolts());
      tft.print(F("V "));
-
+    tft.setTextColor(ILI9341_GREEN,ILI9341_BLACK); //v1.13 
 /////////////////////////////////////////////////////////////////////
 //Ambient light sensor updates all the time to monitor: 
 //Test only?
 /////////////////////////////////////////////////////////////////////       
      tft.print(LightSensor());
      tft.print(F("% "));   
-
+//     tft.setTextColor(ILI9341_GREEN,ILI9341_BLACK); 
 ////////////////////////////
 ////DONE WITH LOOP
 ////////////////////////////
@@ -2318,44 +2353,60 @@ void updateRainRate( uint16_t rainSeconds )
 
 /* ===============================================================================
  * This will smooth the wind pointer.  The time it takes depnds on the loop delay
- * input: is Direction sent from ISS.
- * output: is intermeiate pointer position
+ * input: RAW is Direction sent from ISS.
+ * output: FIL is intermeiate filtered pointer position.
  * ===============================================================================
  */
 
-
+//V1.13 Added special cases for fast moves
 
 uint16_t fPoint( uint16_t rawDirector ){
 
-  static  uint16_t filDirector = 0;
+  static  uint16_t filDirector = 0;//save filtered position here
 
-// if (rawDirector == 0)  return rawDirector; //dont care if zero
+// SAME?  //
  if (rawDirector == filDirector)  return rawDirector ; //no need to move if same
-//now move the point to the raw direction
+//now move the pointed towards the raw direction CCW or CW 
 
-
-    
-     if (rawDirector<filDirector)  //if incoming direction is less
+     /////////////////////CCW Moves//////////////////////////////////////////   
+     if (rawDirector<filDirector)  //if incoming direction is less Move CCW//
        { 
-         // if ((rawDirector-filDirector)>300 ){  //the other side of the dial 
-        //  filDirector = rawDirector; //go ahead and jump
-         // return rawDirector;
-       //   }
-    
+
+    ///////SPECIAL CCW CASES/////
         if(filDirector==0)return rawDirector; //should be above zero her but if not its bad
-  
-        filDirector--;         //head towards CCW
-      
-        return filDirector;
-       
+        if ((filDirector-rawDirector)>300 ) //Way off - crossed north?
+        {
+          filDirector=1; //go ahead and move it on the other side of North
+          return filDirector;   //send pointer to position 
+        }
+        if ((filDirector-rawDirector)>45 )filDirector-=5; //move it faster v1.13
+        if ((filDirector-rawDirector)>22 )filDirector-=5; //move it fast 
+ //       return filDirector;
+        
+ /////nothing special//// just kick it 1 degree CCW       
+       filDirector--;         //head towards CCW 
+       return filDirector;   //send the new position   
      //end move CCW
        }
-       
-   if (rawDirector>filDirector){  //if incomming is more
-    filDirector++; }//move CW
-   //we need to move it
-    return filDirector;   //send current step towards out
+//TODO - this is doubling effort - need figure out better way?  
 
+///////////////////////////CW Moves//////////////////////////////////      
+   if (rawDirector>filDirector){  //if incomming is more move CW  // 
+    
+    ///////SPECIAL CW /////
+   //we need to move it more? 
+   if ((rawDirector-filDirector)>300 ) //Way off - crossed north?
+      {
+      filDirector=359;      //go ahead and move it on the other side of North
+      return filDirector;   //send the pointer to position past North
+      }
+      //pretty far off - 
+    if ((rawDirector-filDirector)>45 )filDirector+=5; //move it faster v1.13 (+11)
+    if ((rawDirector-filDirector)>22 )filDirector+=5; //move it fast (+6)
+    // return here? 
+    filDirector++; //move it one more degree! 
+    return filDirector;   //send current step towards out
+   }
 
  } //End fPoint
 
